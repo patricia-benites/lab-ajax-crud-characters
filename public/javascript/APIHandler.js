@@ -1,25 +1,36 @@
 class APIHandler {
-  constructor (baseUrl) {
+  constructor(baseUrl) {
     this.BASE_URL = baseUrl;
   }
 
-  getFullList () {
+  getFullList() {
+    return axios.get(`${this.BASE_URL}/characters`);
 
   }
 
-  getOneRegister () {
-
+  getOneRegister(id) {
+    return axios.get(`${this.BASE_URL}/characters/${id}`);
   }
 
-  createOneRegister () {
-
+  createOneRegister(inputName, inputOccupation, inputWeapon, inputCartoon) {
+    return axios.post(`${this.BASE_URL}/characters`, {
+    name: inputName.value,
+    occupation:inputOccupation.value,
+    weapon: inputWeapon.value,
+    cartoon: inputCartoon.value
+  });
   }
 
-  updateOneRegister () {
-
+  updateOneRegister(inputName, inputOccupation, inputWeapon, inputCartoon) {
+    return axios.put(`${this.BASE_URL}/characters`, {
+      name: inputName.value,
+      occupation:inputOccupation.value,
+      weapon: inputWeapon.value,
+      cartoon: inputCartoon.value
+    });
   }
 
-  deleteOneRegister () {
-
+  deleteOneRegister(id) {
+    return axios.delete(`${this.BASE_URL}/characters/${id}`)
   }
 }
